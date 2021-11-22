@@ -8,6 +8,7 @@
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open"
   },
+  "browserslist": "> 0.25%, not dead",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/System-tm32/algorithm-examples.git"
@@ -15,6 +16,9 @@
   "author": "Ilin Kirill <systemtm32@yandex.ru>",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^10.0.0",
     "cross-env": "^7.0.3",
@@ -22,7 +26,6 @@
     "css-minimizer-webpack-plugin": "^3.1.4",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
-    "i": "^0.3.7",
     "mini-css-extract-plugin": "^2.4.5",
     "node-sass": "^6.0.1",
     "sass-loader": "^12.3.0",
@@ -33,6 +36,7 @@
     "webpack-dev-server": "^4.5.0"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "normalize.css": "^8.0.1"
   }
 }
