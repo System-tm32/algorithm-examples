@@ -24,7 +24,7 @@ module.exports = {
   context: path.resolve(__dirname, "src"),
   mode: "development",
   entry: {
-    main: ["@babel/polyfill", "/index.js"],
+    main: ["@babel/polyfill", "/index.tsx"],
   },
   output: {
     filename: "[name].[contenthash].js",
@@ -73,6 +73,30 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-env"],
+          },
+        },
+      },
+      {
+        test: /\.m?tsx$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-typescript",
+              "@babel/preset-react",
+            ],
+          },
+        },
+      },
+      {
+        test: /\.m?ts$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-typescript"],
           },
         },
       },
