@@ -1,6 +1,24 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserWebpackPlugin = require("terser-webpack-plugin");
+
+const isDev = process.env.NODE_ENV === "development";
+const isProd = !isDev;
+
+const optimization = () => {
+  const config = {
+    splitChunks: {
+      chunks: "all",
+    },
+  };
+
+  if (isProd)
+    config.minimizer = [new CssMinimizerPlugin(), new TerserWebpackPlugin()];
+  return config;
+};
 
 module.exports = {
   context: path.resolve(__dirname, "src"),
@@ -9,7 +27,7 @@ module.exports = {
     main: "/index.js",
   },
   output: {
-    filename: "[name].bundle.js",
+    filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "dist"),
   },
   resolve: {
@@ -18,25 +36,27 @@ module.exports = {
       "@": path.resolve(__dirname, "src"),
     },
   },
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-    },
-  },
+  optimization: optimization(),
   devServer: {
     port: 4200,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./index.html",
+      minify: {
+        collapseWhitespace: isProd,
+      },
     }),
     new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css",
+    }),
   ],
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.(sa|sc|c)ss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.(png|jpg|svg)$/,
