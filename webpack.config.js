@@ -31,7 +31,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
   },
   resolve: {
-    extensions: [".js", ".json", ".ts"],
+    extensions: [".js", ".json", ".ts", ".scss"],
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
@@ -56,7 +56,7 @@ module.exports = {
     rules: [
       {
         test: /\.(sa|sc|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.(png|jpg|svg)$/,
