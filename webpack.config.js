@@ -31,7 +31,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
   },
   resolve: {
-    extensions: [".js", ".json", ".ts", ".scss"],
+    extensions: [".tsx", ".ts", ".js", ".scss"],
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
@@ -66,37 +66,18 @@ module.exports = {
         test: /\.(ttf|woff|woff2|eot)$/,
         use: ["file-loader"],
       },
+
       {
-        test: /\.m?js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
-          },
-        },
-      },
-      {
-        test: /\.m?tsx$/,
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
             presets: [
               "@babel/preset-env",
-              "@babel/preset-typescript",
               "@babel/preset-react",
+              "@babel/preset-typescript",
             ],
-          },
-        },
-      },
-      {
-        test: /\.m?ts$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env", "@babel/preset-typescript"],
           },
         },
       },
