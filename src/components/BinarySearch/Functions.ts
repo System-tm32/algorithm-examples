@@ -12,7 +12,10 @@ export const binarySearch = (item: number, list: number[]): Number | null => {
   return null;
 };
 
-export const binarySearch1 = (item: number, list: number[]): number | null => {
+export const binarySearchRecursion = <T extends {}>(
+  item: T,
+  list: T[]
+): T | null => {
   if (list.length == 1) {
     return null;
   }
@@ -26,5 +29,5 @@ export const binarySearch1 = (item: number, list: number[]): number | null => {
   if (guess > item) half = list.slice(0, mid);
   else half = list.slice(mid, list.length);
 
-  return binarySearch1(item, half);
+  return binarySearchRecursion(item, half);
 };
