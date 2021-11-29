@@ -14,11 +14,17 @@ export const binarySearch = (item: number, list: number[]): Number | null => {
 
 export const binarySearch1 = (item: number, list: number[]): number | null => {
   if (list.length == 1) {
-    return list[0];
+    return null;
   }
+
+  let half = null;
   const mid = Math.floor(list.length / 2);
   const guess = list[mid];
-  if (guess === item) return mid;
-  if (guess > item) return binarySearch1(item, list.slice(0, mid));
-  else return binarySearch1(item, list.slice(mid, list.length));
+
+  if (guess === item) return guess;
+
+  if (guess > item) half = list.slice(0, mid);
+  else half = list.slice(mid, list.length);
+
+  return binarySearch1(item, half);
 };
