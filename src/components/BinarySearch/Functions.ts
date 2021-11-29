@@ -20,9 +20,9 @@ export const binarySearchRecursion = <T extends {}>(
     return null;
   }
 
-  let half = null;
-  const mid = Math.floor(list.length / 2);
-  const guess = list[mid];
+  let half: T[] | null = null;
+  const mid: number = Math.floor(list.length / 2);
+  const guess: T = list[mid];
 
   if (guess === item) return guess;
 
