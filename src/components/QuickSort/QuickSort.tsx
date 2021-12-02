@@ -1,9 +1,9 @@
 import React from 'react';
-import { lengthArray, quickSort, selectionSort, sum } from './Functions';
+import { unsortedArrayNumbers } from '../../constants/constants';
+import { quickSort } from '../../utils/utils';
 
 const QuickSort = () => {
-  const numbers = [2, 3, 4, 77, 9, 2, 5, 7, 9, 1];
-  return <div>result:{quickSort(numbers)} </div>;
+  return <div>result:{quickSort(unsortedArrayNumbers)} </div>;
 };
 
 export { QuickSort };

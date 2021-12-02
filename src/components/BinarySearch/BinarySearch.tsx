@@ -1,9 +1,14 @@
 import React from 'react';
-import { binarySearch, binarySearchRecursion } from './Functions';
+import { unsortedArrayStrings } from '../../constants/constants';
+import { binarySearchRecursion } from '../../utils/utils';
 
 const BinarySearch = () => {
-  const strings = ['kirill', 'fgdjdfg', 'sdfas', 'sdnndf', 's;asd'];
-  return <div>result:{binarySearchRecursion<string>('sdfas', strings)}</div>;
+  return (
+    <div>
+      result:
+      {binarySearchRecursion<string>('Tom', unsortedArrayStrings).toString()}
+    </div>
+  );
 };
 
 export { BinarySearch };

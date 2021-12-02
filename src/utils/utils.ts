@@ -24,6 +24,40 @@ export const selectionSort = (array: number[]): number[] => {
   return array;
 };
 
+export const binarySearch = (item: number, list: number[]): Number | null => {
+  let low = 0;
+  let hight = list.length;
+
+  while (low <= hight) {
+    const mid = Math.floor((low + hight) / 2);
+    const guess = list[mid];
+    if (guess == item) return mid;
+    if (guess > item) hight = mid - 1;
+    else low = mid + 1;
+  }
+  return null;
+};
+
+export const binarySearchRecursion = <T extends {}>(
+  item: T,
+  list: T[]
+): Boolean => {
+  if (list.length == 1) {
+    return false;
+  }
+
+  let half: T[] | null = null;
+  const mid: number = Math.floor(list.length / 2);
+  const guess: T = list[mid];
+
+  if (guess === item) return true;
+
+  if (guess > item) half = list.slice(0, mid);
+  else half = list.slice(mid, list.length);
+
+  return binarySearchRecursion(item, half);
+};
+
 export const sum = (arr: number[]): number => {
   if (arr.length == 0) return 0;
 

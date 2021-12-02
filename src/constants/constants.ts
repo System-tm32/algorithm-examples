@@ -1,0 +1,32 @@
+export const unsortedArrayNumbers = [
+  1,
+  5,
+  7,
+  8,
+  4,
+  2,
+  6,
+  8,
+  0,
+  8,
+  6,
+  4,
+  2,
+  45,
+  78,
+  546,
+  32,
+  54,
+  78,
+];
+
+export const unsortedArrayStrings = [
+  'Adam',
+  'Eva',
+  'Chill',
+  'Sweet',
+  'Poly',
+  'Any',
+  'Tom',
+  'Wock',
+];
