@@ -85,12 +85,14 @@ export const breadthFirstSearch = (
     }
 
     const person = queue.shift();
-    console.log(searched.includes(person));
-    if (searchRule(person!)) return person!;
-    else {
-      searched.push(person);
-      return iter([...queue, ...graph[person!]]);
-    }
+
+    if (!searched.includes(person))
+      if (searchRule(person!)) return person!;
+      else {
+        searched.push(person);
+        return iter([...queue, ...graph[person!]]);
+      }
+    else return iter(queue);
   };
 
   return iter(searchQueue);

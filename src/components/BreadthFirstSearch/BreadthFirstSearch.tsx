@@ -2,7 +2,7 @@ import React from 'react';
 import { breadthFirstSearch } from '../../utils/utils';
 
 const personIsSeller = (name: string) => {
-  return name[0] == 'j';
+  return name[0] == 'p';
 };
 
 const graph: Record<string, string[]> = {
