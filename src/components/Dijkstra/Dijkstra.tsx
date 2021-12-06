@@ -26,7 +26,10 @@ const findLowerCostNode = (costs: any) => {
   let lowestCostNode = null;
   for (let node in costs) {
     const cost = costs[node];
-    if (cost < lowestCost && !processed.includes(node)) {
+    const isLowerCostAndNotProcessed =
+      cost < lowestCost && !processed.includes(node);
+
+    if (isLowerCostAndNotProcessed) {
       lowestCost = cost;
       lowestCostNode = node;
     }
@@ -34,22 +37,24 @@ const findLowerCostNode = (costs: any) => {
   return lowestCostNode;
 };
 
-const Dijkstra = () => {
-  let node = findLowerCostNode(costs);
-  while (node != null) {
-    const cost = costs[node];
-    const neighbors = graph[node];
-    for (let n in Object.keys(neighbors)) {
-      const newCost = cost + neighbors[n];
-      if (costs[n] > newCost) {
-        costs[n] = newCost;
-        parents[n] = node;
-      }
+const dijkstra = (node: any): any => {
+  if (node == null) return;
+  const cost = costs[node];
+  const neighbors = graph[node];
+  for (let n in neighbors) {
+    const newCost = cost + neighbors[n];
+    if (costs[n] > newCost) {
+      costs[n] = newCost;
+      parents[n] = node;
     }
-    processed.push(node);
-    node = findLowerCostNode(costs);
   }
-  return <div>result: {1}</div>;
+  processed.push(node);
+  return dijkstra(findLowerCostNode(costs));
+};
+
+const Dijkstra = () => {
+  dijkstra(findLowerCostNode(costs));
+  return <div>result: {costs.fin}</div>;
 };
 
 export { Dijkstra };
