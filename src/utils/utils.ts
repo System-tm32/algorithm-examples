@@ -71,3 +71,29 @@ export const lengthArray = (arr: number[]): number => {
   arr.pop();
   return 1 + lengthArray(arr);
 };
+
+export const breadthFirstSearch = (
+  graph: Record<string, string[]>,
+  searchRule: (name: string) => Boolean
+) => {
+  const searchQueue = [...graph['you']];
+  const searched: (string | undefined)[] = [];
+
+  const iter = (queue: string[]): string | null => {
+    if (queue.length == 0) {
+      return null;
+    }
+
+    const person = queue.shift();
+
+    if (!searched.includes(person))
+      if (searchRule(person!)) return person!;
+      else {
+        searched.push(person);
+        return iter([...queue, ...graph[person!]]);
+      }
+    else return iter(queue);
+  };
+
+  return iter(searchQueue);
+};
