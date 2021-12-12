@@ -1,4 +1,5 @@
 import React from 'react';
+import { Approximate } from '../components/Approximate/Approximate';
 import { BinarySearch } from '../components/BinarySearch/BinarySearch';
 import { BreadthFirstSearch } from '../components/BreadthFirstSearch/BreadthFirstSearch';
 import { Dijkstra } from '../components/Dijkstra/Dijkstra';
@@ -19,6 +20,9 @@ const Home = () => {
         </li>
         <li>
           Dijkstra <Dijkstra />
+        </li>
+        <li>
+          Approximate <Approximate />
         </li>
       </ul>
     </div>

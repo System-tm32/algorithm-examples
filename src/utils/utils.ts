@@ -97,3 +97,17 @@ export const breadthFirstSearch = (
 
   return iter(searchQueue);
 };
+
+export function intersection<T>(setA: Set<T>, setB: Set<T>): any {
+  let smallerSet = setA.size > setB.size ? setB : setA;
+  let largerSet = setA.size > setB.size ? setA : setB;
+  return new Set([...smallerSet].filter((element) => largerSet.has(element)));
+}
+
+export function union<T>(setA: Set<T>, setB: Set<T>) {
+  return new Set([...setA, ...setB]);
+}
+
+export function difference<T>(setA: Set<T>, setB: Set<T>): Set<T> {
+  return new Set([...setA].filter((element) => !setB.has(element)));
+}
